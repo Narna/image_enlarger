@@ -31,8 +31,20 @@ def setup():
     while True:
         try:
             path = input("Folder path >> ")
+            
             if os.path.exists(path) == True:
-                break
+                listing = os.listdir(path)
+                found = False
+
+                for file in listing:
+                    if file == 'image_enlarger.py':
+                        found = True
+                if found == True:
+                    break
+                else:
+                    print("Path must be existing and input like the following: ")
+                    print("C:/Users/Hannah/Documents/Computer Science/resizer/Year 7 photos")                    
+                
             else:
                 print("Path must be existing and input like the following: ")
                 print("C:/Users/Hannah/Documents/Computer Science/resizer/Year 7 photos")
@@ -69,3 +81,4 @@ def enlarge(sf, path):
 # RUN #
 sf, path = setup()
 enlarge(sf, path)
+print("Success. ")
